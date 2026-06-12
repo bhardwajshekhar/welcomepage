@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plum Reports | Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ece8f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image: radial-gradient(circle, rgba(160,140,200,0.22) 1px, transparent 1px);
+            background-size: 26px 26px;
+            pointer-events: none;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 22px;
+            width: 100%;
+            max-width: 640px;
+            border: 1px solid #d4cce8;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            box-shadow:
+                0 2px 8px rgba(60,30,100,0.06),
+                0 16px 48px rgba(60,30,100,0.11);
+            animation: cardRise 0.44s cubic-bezier(0.22,1,0.36,1) both;
+        }
+
+        @keyframes cardRise {
+            from { opacity: 0; transform: translateY(28px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .top-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a855f7 35%, #c084fc 65%, #e879f9 100%);
+        }
+
+        .modal-body { padding: 28px 30px 26px; }
+
+        /* ── Header ── */
+        .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .plum-dot {
+            display: inline-block;
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #9333ea, #c084fc);
+            flex-shrink: 0;
+            animation: dotPulse 2.8s ease-in-out infinite;
+        }
+        @keyframes dotPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(147,51,234,0.4); }
+            50%       { box-shadow: 0 0 0 5px rgba(147,51,234,0); }
+        }
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .subtitle-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f3eeff;
+            border: 1px solid #ddd0f7;
+            border-radius: 20px;
+            padding: 4px 13px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6d28d9;
+        }
+        .feature-count-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 4px 11px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* ── Intro ── */
+        .intro {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 13px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 13.5px;
+            color: #374151;
+            line-height: 1.78;
+            font-weight: 400;
+        }
+        .intro strong { color: #1e293b; font-weight: 700; }
+
+        /* ── Section label ── */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .section-label {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #94a3b8;
+        }
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: #e8edf5;
+            margin-left: 10px;
+        }
+
+        /* ── Feature grid ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 9px;
+            margin-bottom: 18px;
+        }
+
+        .feature-card {
+            border: 1.5px solid #e8edf5;
+            border-radius: 15px;
+            padding: 15px 13px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #ffffff;
+            transition: border-color 0.24s, box-shadow 0.24s, transform 0.24s, background 0.24s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            animation: cardFadeIn 0.5s ease both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.08s; }
+        .feature-card:nth-child(2) { animation-delay: 0.14s; }
+        .feature-card:nth-child(3) { animation-delay: 0.20s; }
+        .feature-card:nth-child(4) { animation-delay: 0.26s; }
+        .feature-card:nth-child(5) { animation-delay: 0.32s; }
+        .feature-card:nth-child(6) { animation-delay: 0.38s; }
+
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Shimmer overlay on hover */
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+            transition: left 0.45s ease;
+            pointer-events: none;
+        }
+        .feature-card:hover::before { left: 160%; }
+
+        .feature-card:hover { transform: translateY(-3px); }
+
+        /* Per-card accent on hover */
+        .fc-fav:hover     { border-color: #fcd34d; box-shadow: 0 8px 24px rgba(245,158,11,0.14); background: #fffef0; }
+        .fc-share:hover   { border-color: #93c5fd; box-shadow: 0 8px 24px rgba(59,130,246,0.12); background: #f0f7ff; }
+        .fc-group:hover   { border-color: #c4b5fd; box-shadow: 0 8px 24px rgba(124,58,237,0.12); background: #faf5ff; }
+        .fc-cross:hover   { border-color: #a5b4fc; box-shadow: 0 8px 24px rgba(99,102,241,0.12); background: #f5f5ff; }
+        .fc-save:hover    { border-color: #6ee7b7; box-shadow: 0 8px 24px rgba(16,185,129,0.12); background: #f0fdf8; }
+        .fc-schedule:hover{ border-color: #fdba74; box-shadow: 0 8px 24px rgba(249,115,22,0.13); background: #fff8f0; }
+
+        .ficon {
+            width: 38px; height: 38px;
+            border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-size: 19px;
+            transition: transform 0.24s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .feature-card:hover .ficon { transform: scale(1.18) rotate(-4deg); }
+
+        .fname {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #1e293b;
+            line-height: 1.25;
+            margin-bottom: 3px;
+        }
+        .fdesc {
+            font-size: 11.5px;
+            color: #64748b;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        /* Floating badge */
+        .fbadge {
+            position: absolute;
+            top: 9px; right: 9px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 2px 7px;
+            border-radius: 20px;
+        }
+        .badge-new   { background: #dcfce7; color: #15803d; }
+        .badge-smart { background: #ede9fe; color: #6d28d9; }
+
+        /* ── Callout ── */
+        .callout {
+            background: linear-gradient(135deg, #f5f3ff 0%, #fdf4ff 100%);
+            border: 1.5px solid #e0d9f8;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+        .callout-icon {
+            width: 34px; height: 34px;
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 1px;
+            font-size: 16px;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+        }
+        .callout-text { flex: 1; }
+        .callout-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 3px;
+        }
+        .callout-body {
+            font-size: 12.5px;
+            color: #64748b;
+            line-height: 1.65;
+            font-weight: 500;
+        }
+        .callout-body strong { color: #6d28d9; font-weight: 700; }
+
+        /* ── Footer ── */
+        .footer { display: flex; align-items: center; justify-content: space-between; }
+        .footer-hint {
+            font-size: 12px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+        .footer-hint i { font-size: 13px; color: #10b981; }
+
+        .btn-next {
+            background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 60%, #9333ea 100%);
+            color: #fff;
+            border: none;
+            border-radius: 13px;
+            padding: 13px 26px;
+            font-size: 14px;
+            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 18px rgba(124,58,237,0.35), inset 0 1px 0 rgba(255,255,255,0.16);
+            transition: transform 0.18s, box-shadow 0.18s;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-next::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(124,58,237,0.42), inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .btn-next:active { transform: translateY(0); box-shadow: 0 4px 12px rgba(124,58,237,0.3); }
+        .btn-next i { transition: transform 0.2s; }
+        .btn-next:hover i { transform: translateX(3px); }
+    </style>
+</head>
+<body>
+
+<div class="modal-card">
+    <div class="top-bar"></div>
+    <div class="modal-body">
+
+        <div class="title">
+            <span class="plum-dot"></span>
+            Plum Reports
+        </div>
+        <div class="header-meta">
+            <div class="subtitle-pill">
+                <i class="ti ti-sparkles"></i>
+                Next-Generation Reporting for Smarter Insights.
+            </div>
+        </div>
+
+        <div class="intro">
+            Welcome to <strong>Plum Reports</strong> — a centralised reporting platform built for clarity,
+            speed, and control. From custom-grouped views to cross-tab analysis, every tool is crafted to surface
+            the insights that matter most, <strong>exactly when and where you need them</strong>.
+        </div>
+
+        <div class="section-header">
+            <span class="section-label">Key Features</span>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card fc-fav">
+                <div class="ficon" style="background:#fff8e1; color:#d97706;">
+                    <i class="ti ti-star"></i>
+                </div>
+                <div>
+                    <p class="fname">Favourite Reports</p>
+                    <p class="fdesc">Pin your most-used reports for instant one-click access.</p>
+                </div>
+            </div>
+
+            <div class="feature-card fc-share">
+                <div class="ficon" style="background:#eff6ff; color:#2563eb;">
+                    <i class="ti ti-share-3"></i>
+                </div>
+                <div>
+                    <p class="fname">Report Sharing</p>
+                    <p class="fdesc">Share live reports with teammates or export in any format.</p>
+                </div>
+            </div>
+
+            <div class="feature-card fc-group">
+                <div class="ficon" style="background:#f3eeff; color:#7c3aed;">
+                    <i class="ti ti-layout-rows"></i>
+                </div>
+                <div>
+                    <p class="fname">Group By Report</p>
+                    <p class="fdesc">Aggregate by any dimension for deeper data breakdowns.</p>
+                </div>
+                <span class="fbadge badge-smart">Smart</span>
+            </div>
+
+            <div class="feature-card fc-cross">
+                <div class="ficon" style="background:#eef2ff; color:#4f46e5;">
+                    <i class="ti ti-table"></i>
+                </div>
+                <div>
+                    <p class="fname">Cross Tab Report</p>
+                    <p class="fdesc">Pivot across rows &amp; columns for multi-dimensional views.</p>
+                </div>
+                <span class="fbadge badge-smart">Smart</span>
+            </div>
+
+            <div class="feature-card fc-save">
+                <div class="ficon" style="background:#ecfdf5; color:#059669;">
+                    <i class="ti ti-device-floppy"></i>
+                </div>
+                <div>
+                    <p class="fname">Save Report</p>
+                    <p class="fdesc">Store custom filters &amp; configurations for future reuse.</p>
+                </div>
+            </div>
+
+            <div class="feature-card fc-schedule">
+                <div class="ficon" style="background:#fff7ed; color:#ea580c;">
+                    <i class="ti ti-calendar-clock"></i>
+                </div>
+                <div>
+                    <p class="fname">Report Scheduling</p>
+                    <p class="fdesc">Automate report delivery to any inbox on any cadence.</p>
+                </div>
+                <span class="fbadge badge-new">New</span>
+            </div>
+
+        </div>
+
+        <div class="callout">
+            <div class="callout-icon">
+                <i class="ti ti-bolt"></i>
+            </div>
+            <div class="callout-text">
+                <p class="callout-title">Create, customize, save, share, and automate reports from a single platform.</p>
+                <p class="callout-body">
+                    Designed to streamline reporting from insight to action.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span class="footer-hint">
+                <i class="ti ti-shield-check"></i>
+                Role-based access &amp; secure sharing
+            </span>
+            <button class="btn-next" onclick="goNext()">
+                Explore Reports
+                <i class="ti ti-arrow-right"></i>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function goNext() {
+        const card = document.querySelector('.modal-card');
+        card.style.transition = 'opacity 0.26s ease, transform 0.26s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(14px) scale(0.97)';
+        setTimeout(() => { window.location.href = 'index.html'; }, 270);
+    }
+</script>
+
+</body>
+</html>
